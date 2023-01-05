@@ -1,0 +1,46 @@
+{
+  "languageString": "English",
+  "languageStringNative": "English",
+  "navbar": {
+    "titles": {
+      "dashboard": "Dashboard",
+      "users": "Users Overview",
+      "user": "User Profile",
+      "transactions": "Transactions Overview",
+      "manualWithdrawals": "Manual Withdrawals",
+      "vips": "VIP Users Overview",
+      "race": "Race Stats",
+      "trivia": "Trivia Panel",
+      "coupons": "Coupons Overview"
+    }
+  },
+  "dashboard": {
+    "controls": {
+      "gameActions": {
+        "title": "Game Actions"
+      },
+      "general": {
+        "title": "General",
+        "maintenance": "Maintenance",
+        "login": "Login"
+      },
+      "transactionSettings": {
+        "title": "Transaction Settings",
+        "deposits": "Deposits",
+        "withdrawals": "Withdrawals",
+        "coupons": "Coupons"
+      }
+    }
+  },
+  "race": {
+    "actions": "Race Actions",
+    "information": "Race Information"
+  },
+  "trivia": {
+    "actions": "Trivia Actions",
+    "information": "Trivia Information"
+  },
+  "coupons": {
+    "actions": "Coupons Actions"
+  }
+}
