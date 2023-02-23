@@ -19,7 +19,7 @@ import Drawer from "@material-ui/core/Drawer";
 import Box from "@material-ui/core/Box";
 
 // Components
-import Navbar from "./components/Navbar";
+import { Navbar } from "./components/Navbar/";
 import Footer from "./components/Footer";
 import NotFound from "./components/404.jsx";
 import Chat from "./components/chat/Chat";
@@ -31,7 +31,7 @@ import Cups from "./views/Cups";
 import Affiliates from "./views/Affiliates";
 import Profile from "./views/Profile";
 import Roulette from "./views/Roulette";
-import Crash from "./views/Crash";
+import { Crash } from "./views/";
 import King from "./views/King";
 import Shuffle from "./views/Shuffle";
 import Race from "./views/Race";
@@ -65,9 +65,10 @@ const useStyles = makeStyles(theme => ({
     whiteSpace: "nowrap",
     width: 300,
     borderRight: "none",
-    top: "9%",
-    height: "91%",
+    // top: "80px",
+    height: "100%",
     maxHeight: "100%",
+    zIndex: 1,
     [theme.breakpoints.down("sm")]: {
       display: "none",
     },
@@ -249,7 +250,9 @@ const App = () => {
               }}
               open={open}
             >
-              <Chat />
+              <Box style={{ paddingTop: 80, height: '100%', display: 'flex', flexDirection: 'column' }}>
+                <Chat />
+              </Box>
             </Drawer>
           </div>
         </ToastProvider>

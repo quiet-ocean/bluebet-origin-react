@@ -299,7 +299,7 @@ const Free = ({ open, handleClose, changeWallet, code: suppliedCode }) => {
 
 Free.propTypes = {
   open: PropTypes.bool.isRequired,
-  handleClose: PropTypes.bool.isRequired,
+  handleClose: PropTypes.func.isRequired,
   changeWallet: PropTypes.func.isRequired,
 };
 

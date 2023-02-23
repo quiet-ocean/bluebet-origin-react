@@ -1,10 +1,10 @@
 import axios from "axios";
 
 // Switch API url depending on environment
-export const API_URL =
-  window.location.hostname === "localhost"
-    ? "http://localhost:5000/api"
-    : "https://api.cups.gg/api";
+export const API_URL = "https://api.bluebet.io/api"
+  // window.location.hostname === "localhost"
+  //   ? "http://localhost:5000/api"
+  //   : "https://api.cups.gg/api";
 
 // Declare useful endpoints
 export const STEAM_ASSET_CDN_EDGE_URL =

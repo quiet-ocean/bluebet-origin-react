@@ -23,11 +23,12 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     height: "12rem",
     alignItems: "center",
+    padding: '0 13%',
     "& > div": {
       display: "flex",
       "& > div": {
         width: "100%",
-        textAlign: "right",
+        textAlign: "left",
         display: "flex",
         [theme.breakpoints.down("xs")]: {
           textAlign: "center",
@@ -109,9 +110,9 @@ const Footer = () => {
     <Box>
       <Box className={classes.root}>
         <Container>
-          <Box className={classes.logo}>
+          {/* <Box className={classes.logo}>
             <img src={logo} alt="logo" />
-          </Box>
+          </Box> */}
           <Box className={classes.list}>
             <Box>About</Box>
             <NavLink to="/terms">Terms of Service</NavLink>

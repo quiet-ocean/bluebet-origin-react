@@ -12,9 +12,11 @@ const useStyles = makeStyles(theme => ({
     flexDirection: "column",
     background: "#0A0C1A",
     width: "100%",
-    height: "29vh",
-    borderTopRightRadius: 5,
-    borderTopLeftRadius: 5,
+    // height: "29vh",
+    height: '37vh',
+    // borderTopRightRadius: 5,
+    // borderTopLeftRadius: 5,
+    borderRadius: 5,
     [theme.breakpoints.down("xs")]: {
       width: "100%",
       marginTop: 20,
@@ -65,7 +67,7 @@ const Bets = ({ players, loading }) => {
   const classes = useStyles();
 
   return (
-    <Box className={classes.root}>
+    <Box className={classes.root} height="100% !important" minHeight="20vh">
       <Box className={classes.betAmount} style={{color:"white"}}>
         Current Bets placed
         <span>
