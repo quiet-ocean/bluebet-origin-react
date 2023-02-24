@@ -20,7 +20,8 @@ const useStyles = makeStyles(theme => ({
   liveBetColColor: {
     display: "flex",
     justifyContent: "center",
-    color: "rgb(9, 199, 9)",
+    // color: "rgb(9, 199, 9)",
+    color: '#737990',
   },
 }));
 
@@ -66,7 +67,7 @@ function LiveBets() {
       <Grid container spacing={1} className={classes.staticRow}>
         <Grid item xs={2} className="liveBet-col">
           {" "}
-          <h6 className="static-heading">GAME</h6>
+          <h6 className="static-heading" style={{ textAlign: 'center' }}>GAME</h6>
         </Grid>
         <Grid item xs={2} className={classes.liveBetCol}>
           {" "}
@@ -91,7 +92,7 @@ function LiveBets() {
       </Grid>
       {FakeAPI.map((data, index) => {
         return (
-          <Grid container spacing={1} key={index}>
+          <Grid container spacing={1} key={index} style={{ background: index % 2 === 1 ? '#363a568f' : '', borderRadius: 5 }}>
             <Grid item xs={2} className={classes.liveBetColColor}>
               <h6>{data.game}</h6>
             </Grid>

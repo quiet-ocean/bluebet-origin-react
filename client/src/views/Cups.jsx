@@ -622,7 +622,7 @@ const Cups = ({ user, match, history, isAuthenticated }) => {
         handleClose={() => setPrivateGameModalVisible(state => !state)}
         link={privateLink}
       />
-      <Toolbar variant="dense" className={classes.controls}>
+      <Toolbar variant="dense" className={classes.controls} style={{ padding: '0 8'}}>
         <Box className={classes.logo}>
           CUPS
           <br />

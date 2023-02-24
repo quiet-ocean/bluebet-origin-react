@@ -5,7 +5,8 @@ import { makeStyles, withStyles } from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 // Assets
-import cups from "./assets/logo-wide.png";
+// import cups from "./assets/logo-wide.png";
+import logo from './assets/blue-bet-logo.png'
 
 // Custom styles
 const useStyles = makeStyles(() => ({
@@ -36,7 +37,7 @@ const Preloader = () => {
 
   return (
     <div className={classes.root}>
-      <img src={cups} className={classes.img} alt="Cups.gg Logo" />
+      <img src={logo} className={classes.img} alt="Blue Bet" />
       <ColorCircularProgress />
     </div>
   );

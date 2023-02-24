@@ -1,12 +1,14 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import parseCommasToThousands from "../../utils/parseCommasToThousands";
 import cutDecimalPoints from "../../utils/cutDecimalPoints";
+import Countdown from "react-countdown";
 
 // MUI Components
 import Box from "@material-ui/core/Box";
 import { useEffect } from "react";
 import Rocket from "../../assets/Rocket.webp";
+import CrashBG from '../../assets/crash-game-bg.webp'
 
 // Custom Styled Componen
 const Cup = withStyles({
@@ -16,8 +18,11 @@ const Cup = withStyles({
     display: "flex",
     width: "100%",
     height: "100%",
-    backgroundImage: "url('../../assets/graph.png')",
-    backgroundSize: "contain",
+    // backgroundImage: "url('../../assets/graph.png')",
+    backgroundRepeat: 'no-repeat',
+    backgroundImage: "url('/crash-game-bg.png')",
+    backgroundSize: "100% 100%",
+    paddingBottom: 16,
     // "&::after": {
     //   content: "''",
     //   position: "absolute",
@@ -36,11 +41,10 @@ const Cup = withStyles({
 
     "& .svg-y": {
       position: "absolute",
-
       width: "100%",
       height: "100%",
       stroke: "#4d79ff",
-      strokeWidth: "1px",
+      strokeWidth: "3px",
     },
     "& .mid": {
       position: "absolute",
@@ -284,11 +288,51 @@ const BET_STATES = {
   CashedOut: 2,
 };
 
-const CupAnimation = ({ loading, payout, ownBet, gameState }) => {
-  const classes = useStyles();
+const renderer = ({ minutes, seconds, completed }) => {
+  if (completed) {
+    // Render a completed state
+    return "In Progress";
+  } else {
+    // Render a countdown
+    return `${minutes}:${seconds < 10 ? "0" + seconds : seconds}`;
+  }
+};
 
+const renderText = ({ payout, gameState, startTime }) => {
   return (
-    <span
+    <>
+      {gameState === GAME_STATES.InProgress && `${payout.toFixed(2)}x`}
+      {
+        gameState === GAME_STATES.Starting && <Fragment>
+                <div>
+                  <div>
+                    <Countdown
+                      key={startTime}
+                      date={startTime}
+                      renderer={renderer}
+                    />
+                  </div>
+                  <div style={{
+                    textAlign: 'center',
+                    fontSize: '16px',
+                    fontWeight: '400',
+                  }}>
+                    Starting...
+                  </div>
+                </div>
+              </Fragment>
+      }
+      {gameState === GAME_STATES.Over && `Crashed`}
+    </>
+  )
+}
+
+const CupAnimation = ({ loading, payout, ownBet, gameState, startTime }) => {
+  const classes = useStyles();
+  // console.log(loading, payout, ownBet, gameState)
+  console.log(gameState)
+  return (
+    <div
       style={{
         width: "100%",
         height: "100%",
@@ -296,7 +340,7 @@ const CupAnimation = ({ loading, payout, ownBet, gameState }) => {
       }}
     >
       <Cup
-        className={`${gameState === GAME_STATES.Over ? "crashed" : "running"}`}
+        className={ `${gameState === GAME_STATES.Over ? "crashed" : "running"}`}
       >
         <svg
           className="svg-y"
@@ -309,7 +353,7 @@ const CupAnimation = ({ loading, payout, ownBet, gameState }) => {
 
           <path
             d="M 5 98 Q 70 90 88 15" //350/95
-            vector-effect="non-scaling-stroke"
+            vectorEffect="non-scaling-stroke"
             fill="transparent"
             stroke="#4d79ff"
             className={`${
@@ -319,7 +363,7 @@ const CupAnimation = ({ loading, payout, ownBet, gameState }) => {
             }`}
             style={{ position: "absolute" }}
           />
-          <image width="15" height="15" y="-15" x  href={Rocket}             className={`${
+          <image width="15" height="15" y="-15" x="0" href={Rocket} className={`${
               gameState === GAME_STATES.InProgress
                 ? "animation-play2 marker"
                 : "animation-stop marker"
@@ -345,7 +389,10 @@ const CupAnimation = ({ loading, payout, ownBet, gameState }) => {
       </Cup>
       <div className={classes.meta}>
         <div className={classes.payout}>
-          {loading ? "Loading" : `${payout.toFixed(2)}x`}
+          {/* {loading ? "Loading" : `${payout.toFixed(2)}x`} */}
+          {loading && `loading`}
+          {!loading && renderText({ payout, gameState, startTime })}
+          {/* {gameState === GAME_STATES.InProgress && `${payout.toFixed(2)}x`} */}
         </div>
         {(gameState === GAME_STATES.InProgress ||
           gameState === GAME_STATES.Over) &&
@@ -366,7 +413,7 @@ const CupAnimation = ({ loading, payout, ownBet, gameState }) => {
             </div>
           )}
       </div>
-    </span>
+    </div>
   );
 };
 

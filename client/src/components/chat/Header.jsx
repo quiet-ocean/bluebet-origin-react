@@ -10,7 +10,8 @@ const useStyles = makeStyles({
     background: "#070A17",
     // background: "#131522",
     display: "flex",
-    height: "5rem",
+    // height: "5rem",
+    height: 67,
     justifyContent: "row",
     "& img": {
       height: "2.5rem",
@@ -26,7 +27,8 @@ const useStyles = makeStyles({
   online: {
     display: "flex",
     alignItems: "center",
-    marginLeft: "3em",
+    // marginLeft: "3em",
+    marginLeft: 24,
     color: "#3c4160",
     fontSize: 13,
     "& span": {
@@ -44,12 +46,15 @@ const Messages = ({usersOnline}) => {
 
   return (
     <Box className={classes.root}>
-      <img src={logo} alt="logo" />
-      <Box className={classes.online} style={{color:"white"}}>
-            <span>●</span>
-            <p>{usersOnline}</p>
-            Online
-          </Box>
+      {/* <img src={logo} alt="logo" /> */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', padding: '0 16px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', color: '#fff', fontSize: 20 }}>Chat</div>
+        <Box className={classes.online} style={{color:"white"}}>
+          <span>●</span>
+          <p>{usersOnline}</p>
+          Online
+        </Box>
+      </div>
     </Box>
   );
 };
