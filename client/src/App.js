@@ -31,7 +31,7 @@ import Cups from "./views/Cups";
 import Affiliates from "./views/Affiliates";
 import Profile from "./views/Profile";
 import Roulette from "./views/Roulette";
-import { Crash } from "./views/";
+import { Crash } from "./views/Crash/";
 import King from "./views/King";
 import Shuffle from "./views/Shuffle";
 import Race from "./views/Race";
