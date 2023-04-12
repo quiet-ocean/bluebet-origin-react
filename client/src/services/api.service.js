@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // Switch API url depending on environment
-export const API_URL = "https://api.bluebet.io/api"
+export const API_URL = "http://localhost:5000/api"
   // window.location.hostname === "localhost"
   //   ? "http://localhost:5000/api"
   //   : "https://api.cups.gg/api";

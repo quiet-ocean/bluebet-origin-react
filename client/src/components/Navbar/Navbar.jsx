@@ -361,6 +361,29 @@ const Navbar = ({ isAuthenticated, isLoading, user, logout }) => {
   const open = Boolean(anchorEl);
   const openMobile = Boolean(mbAnchorEl);
 
+  const [pages, setPages] = useState([
+    {
+      label: 'Crash',
+      link: '/crash',
+      active: true,
+    },
+    {
+      label: 'Cups',
+      link: '/cups',
+      active: false,
+    },
+    {
+      label: 'Roulette',
+      link: '/roulette',
+      active: false,
+    },
+    {
+      label: 'Shuffle',
+      link: '/shuffle',
+      active: false,
+    },
+  ])
+
   // If user has clicked affiliate link
   useEffect(() => {
     // Get affiliate code from localStorage
@@ -400,66 +423,31 @@ const Navbar = ({ isAuthenticated, isLoading, user, logout }) => {
           open={openFree}
           code={affiliateCode}
         />
+        <Box style={{ marginLeft: '72px' }}>
+          {
+            pages.map((page, index) => (
+              <Link
+                exact
+                activeClassName={classes.active}
+                className={classes.notactive}
+                to={page.link}
+                key={index}
+              >
+                <Button size="large" variant="text" style={{ textTransform: 'capitalize', color: 'white' }}>
+                  {page.label}
+                </Button>
+              </Link>
+            ))
+          }
 
-        <Link
-          exact
-          activeClassName={classes.active}
-          className={classes.notactive}
-          to="/crash"
-        >
-          <Button size="large" color="primary" variant="outlined">
-            <span className={classes.reverse}>
-              <img className="crash" src={crash} alt="crash" />
-            </span>
-          </Button>
-        </Link>
-
-        <Link
-          exact
-          activeClassName={classes.active}
-          className={classes.notactive}
-          to="/cups"
-        >
-          <Button size="large" color="primary" variant="outlined">
-            <span className={classes.reverse}>
-              <img src={cup} alt="cup" />
-            </span>
-          </Button>
-        </Link>
-
-        <Link
-          exact
-          activeClassName={classes.active}
-          className={classes.notactive}
-          to="/shuffle"
-        >
-          <Button size="large" color="primary" variant="outlined">
-            <span className={classes.reverse}>
-              <img src={shuffle} alt="shuffle" />
-            </span>
-          </Button>
-        </Link>
-
-        <Link
-          exact
-          activeClassName={classes.active}
-          className={classes.notactive}
-          to="/roulette"
-        >
-          <Button size="large" color="primary" variant="outlined">
-            <span className={classes.reverse}>
-              <img src={spin} alt="spin" />
-            </span>
-          </Button>
-        </Link>
-
+        </Box>
         {isAuthenticated && user && (
           <span className={classes.sub}>
             <Button
               onClick={() => setOpenMarket(!openMarket)}
               size="small"
               startIcon={<ShoppingCart />}
-              color="primary"
+              style={{ color: 'white' }}
             >
               <span className={classes.reverse}>Market</span>
             </Button>
@@ -471,7 +459,7 @@ const Navbar = ({ isAuthenticated, isLoading, user, logout }) => {
             onClick={() => setOpenHelp(!openHelp)}
             size="small"
             startIcon={<ContactSupport />}
-            color="primary"
+            style={{ color: 'white' }}
           >
             <span className={classes.reverse}>Help</span>
           </Button>
@@ -484,7 +472,7 @@ const Navbar = ({ isAuthenticated, isLoading, user, logout }) => {
             className={classes.sub}
             to="/affiliates"
           >
-            <Button size="small" startIcon={<ControlCamera />} color="primary">
+            <Button size="small" startIcon={<ControlCamera />} style={{ color: 'white' }}>
               <span className={classes.reverse}>Affiliates</span>
             </Button>
           </Link>
@@ -496,7 +484,7 @@ const Navbar = ({ isAuthenticated, isLoading, user, logout }) => {
           className={classes.sub}
           to="/race"
         >
-          <Button size="small" startIcon={<FlashOnIcon />} color="primary">
+          <Button size="small" startIcon={<FlashOnIcon />} style={{ color: 'white' }}>
             <span className={classes.reverse}>Race</span>
           </Button>
         </Link>
