@@ -23,11 +23,12 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     height: "12rem",
     alignItems: "center",
+    padding: '0 13%',
     "& > div": {
       display: "flex",
       "& > div": {
         width: "100%",
-        textAlign: "right",
+        textAlign: "left",
         display: "flex",
         [theme.breakpoints.down("xs")]: {
           textAlign: "center",
@@ -36,7 +37,8 @@ const useStyles = makeStyles(theme => ({
           color: "white",
         },
         "& > a": {
-          color: "#4b547f",
+          // color: "#4b547f",
+          color: '#9F9F9F',
           cursor: "pointer",
           textDecoration: "none",
         },
@@ -76,7 +78,8 @@ const useStyles = makeStyles(theme => ({
   endRoot: {
     background: "#0a0c1a",
     // background: "#141724",
-    color: "#353a5e",
+    // color: "#353a5e",
+    color: '#9F9F9F',
     display: "flex",
     height: "5rem",
     alignItems: "center",
@@ -109,9 +112,9 @@ const Footer = () => {
     <Box>
       <Box className={classes.root}>
         <Container>
-          <Box className={classes.logo}>
+          {/* <Box className={classes.logo}>
             <img src={logo} alt="logo" />
-          </Box>
+          </Box> */}
           <Box className={classes.list}>
             <Box>About</Box>
             <NavLink to="/terms">Terms of Service</NavLink>

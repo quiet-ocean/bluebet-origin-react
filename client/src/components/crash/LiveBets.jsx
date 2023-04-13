@@ -1,16 +1,25 @@
 import React from "react";
 // Import Bootstrap
-import Grid from "@material-ui/core/Grid";
+import { Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles(theme => ({
   staticRow: {
     background: "#0A0C1A",
     color: "#fff",
     borderRadius: "5px",
+    
+    '& .MuiTypography-root': {
+      fontSize: 14,
+      fontWeight: 700,
+      margin: 12,
+      textTransform: 'capitalize',
+    }
   },
   liveBetCol: {
     display: "flex",
     justifyContent: "center",
+    fontSize: 14,
+    fontWeight: 500,
   },
 
   lightColor: {
@@ -20,7 +29,15 @@ const useStyles = makeStyles(theme => ({
   liveBetColColor: {
     display: "flex",
     justifyContent: "center",
-    color: "rgb(9, 199, 9)",
+    // color: "rgb(9, 199, 9)",
+    // color: '#737990',
+    color: '#9F9F9F',
+    '& .MuiTypography-root': {
+      fontSize: 14,
+      fontWeight: 200,
+      margin: 12,
+      textTransform: 'capitalize',
+    }
   },
 }));
 
@@ -66,49 +83,49 @@ function LiveBets() {
       <Grid container spacing={1} className={classes.staticRow}>
         <Grid item xs={2} className="liveBet-col">
           {" "}
-          <h6 className="static-heading">GAME</h6>
+          <Typography className="static-heading" style={{ textAlign: 'center' }}>GAME</Typography>
         </Grid>
         <Grid item xs={2} className={classes.liveBetCol}>
           {" "}
-          <h6 className="static-heading">USER</h6>
+          <Typography className="static-heading">USER</Typography>
         </Grid>
         <Grid item xs={2} className={classes.liveBetCol}>
           {" "}
-          <h6 className="static-heading">TIME</h6>
+          <Typography className="static-heading">TIME</Typography>
         </Grid>
         <Grid item xs={2} className={classes.liveBetCol}>
           {" "}
-          <h6 className="static-heading">WAGER</h6>
+          <Typography className="static-heading">WAGER</Typography>
         </Grid>
         <Grid item xs={2} className={classes.liveBetCol}>
           {" "}
-          <h6 className="static-heading">PAYOUT</h6>
+          <Typography className="static-heading">PAYOUT</Typography>
         </Grid>
         <Grid item xs={2} className={classes.liveBetCol}>
           {" "}
-          <h6 className="static-heading">PROFIT</h6>
+          <Typography className="static-heading">PROFIT</Typography>
         </Grid>
       </Grid>
       {FakeAPI.map((data, index) => {
         return (
-          <Grid container spacing={1} key={index}>
+          <Grid container spacing={1} key={index} style={{ background: index % 2 === 1 ? '#363a568f' : '', borderRadius: 5 }}>
             <Grid item xs={2} className={classes.liveBetColColor}>
-              <h6>{data.game}</h6>
+              <Typography>{data.game}</Typography>
             </Grid>
             <Grid item xs={2} className={classes.liveBetColColor}>
-              <h6>{data.user}</h6>
+              <Typography>{data.user}</Typography>
             </Grid>
             <Grid item xs={2} className={classes.liveBetColColor}>
-              <h6>{data.time}</h6>
+              <Typography>{data.time}</Typography>
             </Grid>
             <Grid item xs={2} className={classes.liveBetColColor}>
-              <h6>{data.wager}</h6>
+              <Typography>{data.wager}</Typography>
             </Grid>
             <Grid item xs={2} className={classes.liveBetColColor}>
-              <h6>{data.payout}</h6>
+              <Typography>{data.payout}</Typography>
             </Grid>
             <Grid item xs={2} className={classes.liveBetColColor}>
-              <h6>{data.profit}</h6>
+              <Typography>{data.profit}</Typography>
             </Grid>
           </Grid>
         );

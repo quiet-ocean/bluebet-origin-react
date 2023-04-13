@@ -19,7 +19,7 @@ import Drawer from "@material-ui/core/Drawer";
 import Box from "@material-ui/core/Box";
 
 // Components
-import Navbar from "./components/Navbar";
+import { AppBar } from "./components/appbar/";
 import Footer from "./components/Footer";
 import NotFound from "./components/404.jsx";
 import Chat from "./components/chat/Chat";
@@ -31,7 +31,7 @@ import Cups from "./views/Cups";
 import Affiliates from "./views/Affiliates";
 import Profile from "./views/Profile";
 import Roulette from "./views/Roulette";
-import Crash from "./views/Crash";
+import { Crash } from "./views/Crash/";
 import King from "./views/King";
 import Shuffle from "./views/Shuffle";
 import Race from "./views/Race";
@@ -47,6 +47,7 @@ import Maintenance from "./views/Maintenance";
 
 // App Metadata
 import metadata from "./metadata.json";
+import { BreadCrumbs } from "./components/BreadCrumbs";
 
 // Styles
 const useStyles = makeStyles(theme => ({
@@ -60,14 +61,16 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     overflow: "visible",
     flexDirection: "column",
-    background: "#0B0D1C",
+    // background: "#0B0D1C",
+    background: '#111429',
     position: "relative",
     whiteSpace: "nowrap",
     width: 300,
     borderRight: "none",
-    top: "9%",
-    height: "91%",
+    // top: "80px",
+    height: "100%",
     maxHeight: "100%",
+    zIndex: 1,
     [theme.breakpoints.down("sm")]: {
       display: "none",
     },
@@ -202,11 +205,10 @@ const App = () => {
             <CssBaseline />
 
             <main className={classes.content}>
-              <Navbar />
+              <AppBar />
               <MobileNav mobileChat={mobileChat} setMobile={setMobile} />
 
               <Box height="5rem" />
-
               <Switch>
                 <Redirect exact from="/" to="crash" />
 
@@ -249,7 +251,9 @@ const App = () => {
               }}
               open={open}
             >
-              <Chat />
+              <Box style={{ paddingTop: 80, height: '100%', display: 'flex', flexDirection: 'column' }}>
+                <Chat />
+              </Box>
             </Drawer>
           </div>
         </ToastProvider>

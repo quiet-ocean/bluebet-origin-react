@@ -1,5 +1,5 @@
 import React from "react";
-import Box from "@material-ui/core/Box";
+import { Box, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
 
 //assets
@@ -10,7 +10,8 @@ const useStyles = makeStyles({
     background: "#070A17",
     // background: "#131522",
     display: "flex",
-    height: "5rem",
+    // height: "5rem",
+    height: 56,
     justifyContent: "row",
     "& img": {
       height: "2.5rem",
@@ -26,7 +27,8 @@ const useStyles = makeStyles({
   online: {
     display: "flex",
     alignItems: "center",
-    marginLeft: "3em",
+    // marginLeft: "3em",
+    marginLeft: 24,
     color: "#3c4160",
     fontSize: 13,
     "& span": {
@@ -44,12 +46,17 @@ const Messages = ({usersOnline}) => {
 
   return (
     <Box className={classes.root}>
-      <img src={logo} alt="logo" />
-      <Box className={classes.online} style={{color:"white"}}>
-            <span>●</span>
-            <p>{usersOnline}</p>
+      {/* <img src={logo} alt="logo" /> */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', padding: '0 12px' }}>
+        <Typography style={{ display: 'flex', alignItems: 'center', color: '#fff', fontSize: 20 }}>Chat</Typography>
+        <Box className={classes.online} style={{color:"white"}}>
+          <span>●</span>
+          <Typography>
+            {usersOnline ? usersOnline : 0}&nbsp;
             Online
-          </Box>
+          </Typography>
+        </Box>
+      </div>
     </Box>
   );
 };

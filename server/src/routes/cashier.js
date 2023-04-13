@@ -29,7 +29,7 @@ const CryptoTransaction = require("../models/CryptoTransaction");
 
 // List all the accounts when server is started
 try {
-  listAccountInfo();
+  // listAccountInfo();
 } catch (error) {
   console.log(
     colors.grey("Coinbase >> Couldn't list account info:"),
