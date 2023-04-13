@@ -37,7 +37,8 @@ const useStyles = makeStyles(theme => ({
           color: "white",
         },
         "& > a": {
-          color: "#4b547f",
+          // color: "#4b547f",
+          color: '#9F9F9F',
           cursor: "pointer",
           textDecoration: "none",
         },
@@ -77,7 +78,8 @@ const useStyles = makeStyles(theme => ({
   endRoot: {
     background: "#0a0c1a",
     // background: "#141724",
-    color: "#353a5e",
+    // color: "#353a5e",
+    color: '#9F9F9F',
     display: "flex",
     height: "5rem",
     alignItems: "center",

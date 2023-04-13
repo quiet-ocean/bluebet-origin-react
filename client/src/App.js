@@ -19,7 +19,7 @@ import Drawer from "@material-ui/core/Drawer";
 import Box from "@material-ui/core/Box";
 
 // Components
-import { Navbar } from "./components/Navbar/";
+import { AppBar } from "./components/appbar/";
 import Footer from "./components/Footer";
 import NotFound from "./components/404.jsx";
 import Chat from "./components/chat/Chat";
@@ -47,6 +47,7 @@ import Maintenance from "./views/Maintenance";
 
 // App Metadata
 import metadata from "./metadata.json";
+import { BreadCrumbs } from "./components/BreadCrumbs";
 
 // Styles
 const useStyles = makeStyles(theme => ({
@@ -60,7 +61,8 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     overflow: "visible",
     flexDirection: "column",
-    background: "#0B0D1C",
+    // background: "#0B0D1C",
+    background: '#111429',
     position: "relative",
     whiteSpace: "nowrap",
     width: 300,
@@ -203,11 +205,10 @@ const App = () => {
             <CssBaseline />
 
             <main className={classes.content}>
-              <Navbar />
+              <AppBar />
               <MobileNav mobileChat={mobileChat} setMobile={setMobile} />
 
               <Box height="5rem" />
-
               <Switch>
                 <Redirect exact from="/" to="crash" />
 

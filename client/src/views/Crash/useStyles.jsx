@@ -5,11 +5,19 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     width: "100%",
     marginBottom: "3em",
-    paddingLeft: "13%",
-    paddingRight: "13%",
-    paddingTop: 30,
+    // paddingLeft: "13%",
+    // paddingRight: "13%",
+    // paddingTop: 30,
+    
+    paddingTop: 0,
     paddingBottom: 120,
     // marginTop: 12,
+    [theme.breakpoints.up('sm')]: {
+      padding: '0 92px',
+    },
+    [theme.breakpoints.down('sm')]: {
+      padding: '0 12px',
+    },
     [theme.breakpoints.down("xs")]: {
       paddingTop: 25,
     },
@@ -152,7 +160,8 @@ const useStyles = makeStyles(theme => ({
     background: "#0A0C1A",
     // backgroundImage: "url('/crash-game-bg.png)",
     // backgroundSize: "contain",
-    borderRadius: 8,
+    // borderRadius: 8,
+    borderRadius: 5,    
     transition: "1s ease",
   },
   gameInfo: {
@@ -224,10 +233,10 @@ const useStyles = makeStyles(theme => ({
     },
   },
   title: {
-    // fontSize: 14,
+    fontSize: 14,
     fontWeight: 600,
     color: "#292E41",
-    padding: "16px 14px 0",
+    // padding: "16px 14px 0",
     lineHeight: 1,
   },
   splitTitle: {
@@ -235,9 +244,9 @@ const useStyles = makeStyles(theme => ({
     fontSize: 14,
     fontWeight: 600,
     color: "#292E41",
-    padding: "16px 14px 0",
+    // padding: "16px 14px 0",
     lineHeight: 1,
-    width: "50%",
+    // width: "50%",
   },
   contain: {
     [theme.breakpoints.down("xs")]: {
@@ -274,9 +283,9 @@ const useStyles = makeStyles(theme => ({
   },
   betCont: {
     display: "flex",
-    width: "90%",
-    marginLeft: "5.5%",
-    marginRight: "5.5%",
+    width: "100%",
+    // marginLeft: "5.5%",
+    // marginRight: "5.5%",
     flexDirection: "column",
     position: "relative",
     // justifyContent: "center",
@@ -295,7 +304,7 @@ const useStyles = makeStyles(theme => ({
   },
   autoCont: {
     display: "inline-flex",
-    width: "50%",
+    width: "100%",
     justifyContent: "flex-start",
     alignItems: "center",
     paddingLeft: 10,
@@ -303,12 +312,13 @@ const useStyles = makeStyles(theme => ({
   },
   reverse: {
     // transform: "skew(15deg)",
-    fontSize: "0.8em",
+    // fontSize: "0.8em",
+    fontSize: 14,
   },
   bet: {
     minWidth: "90%",
     marginLeft: "5%",
-    fontSize: "1em",
+    fontSize: 14,
     padding: "0.5em !important",
     backgroundColor: "#4d79ff",
     borderColor: "#FF4D4D",
@@ -334,6 +344,20 @@ const useStyles = makeStyles(theme => ({
       color: "white",
     },
   },
+  betControl: {
+    padding: '8px 12px 0 12px',
+    '& > p': {
+      fontWeight: 400,
+    }
+  },
+  liveBetsWrapper: {
+    [theme.breakpoints.up('sm')]: {
+      padding: '0 92px',
+    },
+    [theme.breakpoints.down('sm')]: {
+      padding: '0 16px',
+    },
+  }
 }));
 
 export default useStyles

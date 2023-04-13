@@ -5,7 +5,7 @@ import cutDecimalPoints from "../../utils/cutDecimalPoints";
 import Countdown from "react-countdown";
 
 // MUI Components
-import Box from "@material-ui/core/Box";
+import { Box, Typography } from "@material-ui/core";
 import { useEffect } from "react";
 import Rocket from "../../assets/Rocket.webp";
 import CrashBG from '../../assets/crash-game-bg.webp'
@@ -254,8 +254,8 @@ const useStyles = makeStyles({
   },
   payout: {
     color: "#fff",
-    fontSize: "3.125rem",
-    fontWeight: "700",
+    fontSize: 48,
+    fontWeight: 600,
     userSelect: "none",
     lineHeight: 1,
   },
@@ -388,16 +388,16 @@ const CupAnimation = ({ loading, payout, ownBet, gameState, startTime }) => {
         <div className="bottomBar"></div> */}
       </Cup>
       <div className={classes.meta}>
-        <div className={classes.payout}>
+        <Typography className={classes.payout}>
           {/* {loading ? "Loading" : `${payout.toFixed(2)}x`} */}
           {loading && `loading`}
           {!loading && renderText({ payout, gameState, startTime })}
           {/* {gameState === GAME_STATES.InProgress && `${payout.toFixed(2)}x`} */}
-        </div>
+        </Typography>
         {(gameState === GAME_STATES.InProgress ||
           gameState === GAME_STATES.Over) &&
           ownBet && (
-            <div
+            <Typography
               className={`${classes.profit} ${
                 ownBet.status === BET_STATES.CashedOut ? "cashed" : ""
               }`}
@@ -410,7 +410,7 @@ const CupAnimation = ({ loading, payout, ownBet, gameState, startTime }) => {
                 : parseCommasToThousands(
                     cutDecimalPoints(ownBet.winningAmount.toFixed(7))
                   )}
-            </div>
+            </Typography>
           )}
       </div>
     </div>

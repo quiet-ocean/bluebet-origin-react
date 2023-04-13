@@ -68,9 +68,10 @@ const Bets = ({ players, loading }) => {
 
   return (
     <Box className={classes.root} height="100% !important" minHeight="20vh">
-      <Box className={classes.betAmount} style={{color:"white"}}>
-        Current Bets placed
-        <span>
+      <Box className={classes.betAmount} style={{color:"white", fontWeight: 400 }}>
+        {/* Current Bets placed */}
+        {players.length ? players.length : '0'} Players
+        <span style={{ fontWeight: 'bold' }}>
           {loading
             ? "Loading..."
             : "$" +

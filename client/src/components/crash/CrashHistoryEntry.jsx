@@ -22,6 +22,8 @@ const Multiplier = withStyles(theme => ({
     // transform: "skew(-20deg)",
     marginRight: 5,
     padding: '2px 4px',
+    boxShadow: 'none',
+    fontWeight: 500,
     [theme.breakpoints.down("sm")]: {
       marginTop: 5,
       fontSize: "0.675rem",

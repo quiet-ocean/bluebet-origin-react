@@ -46,6 +46,8 @@ import BetInput from './BetInput'
 import TargetInput from "./TargetInput";
 import useStyles from "./useStyles";
 import { CrashHistory } from "./CrashHistory";
+import { BreadCrumbs } from "../../components/BreadCrumbs";
+import { Typography } from "@material-ui/core";
 
 // Renderer callback with condition
 const renderer = ({ minutes, seconds, completed }) => {
@@ -463,8 +465,9 @@ const Crash = ({ user, isAuthenticated }) => {
       <div>
         <Box className={classes.root}>
           <Container className={classes.container}>
+            <BreadCrumbs />
             <Grid
-              style={{ display: "flex", flexDirection: "row" }}
+              style={{ display: "flex", flexDirection: "row", justifyContent: 'space-between' }}
               container
               className={classes.contain}
             >
@@ -511,7 +514,7 @@ const Crash = ({ user, isAuthenticated }) => {
                     startTime={startTime}
                   />
                 </Box>
-                <Box style={{ position: 'absolute', top: 32, left: 12, width: '66%' }}>
+                <Box style={{ position: 'absolute', top: 12, left: 12, width: '66%' }}>
                   <CrashHistory history={history}/>
                 </Box>
               </Box>
@@ -522,167 +525,171 @@ const Crash = ({ user, isAuthenticated }) => {
                 style={{ background: "" }}
               >
                 <Bets players={players} loading={loading} />
-                <Box className={classes.placeBet} mt='18px' pb={2}>
-                  <div className={classes.title} style={{ color: "white" }}>
-                    Bet Amount
-                  </div>
-                  <Box className={classes.betCont}>
-                    <BetInput
-                      label=""
-                      variant="filled"
-                      value={betAmount}
-                      onChange={onBetChange}
-                      InputProps={{
-                        startAdornment: (
-                          <InputAdornment
-                            className={classes.inputIcon}
-                            position="start"
-                          >
-                            <AttachMoneyIcon
-                              style={{ fontSize: 16, marginTop: "-1em" }}
-                            />
-                          </InputAdornment>
-                        ),
-                      }}
-                    />
-                    {/* <Button
-                      className={classes.multiplier}
-                      size="medium"
-                      color="primary"
-                      variant="contained"
-                      onClick={() =>
-                        setBetAmount(
-                          state => (parseFloat(state) + 1).toFixed(2) || 0
-                        )
-                      }
-                    >
-                      <span className={classes.reverse}>+1</span>
-                    </Button> */}
-                    {/* <Button
-                      className={classes.multiplier}
-                      size="medium"
-                      color="primary"
-                      variant="contained"
-                      onClick={() =>
-                        setBetAmount(
-                          state => (parseFloat(state) + 5).toFixed(2) || 0
-                        )
-                      }
-                    >
-                      <span className={classes.reverse}>+5</span>
-                    </Button> */}
-                    {/* <Button
-                      className={classes.multiplier}
-                      size="medium"
-                      color="primary"
-                      variant="contained"
-                      onClick={() =>
-                        setBetAmount(
-                          state => (parseFloat(state) + 10).toFixed(2) || 0
-                        )
-                      }
-                    >
-                      <span className={classes.reverse}>+10</span>
-                    </Button> */}
-                    {/* <Button
-                      className={classes.multiplier}
-                      size="medium"
-                      color="primary"
-                      variant="contained"
-                      onClick={() =>
-                        setBetAmount(
-                          state => (parseFloat(state) + 25).toFixed(2) || 0
-                        )
-                      }
-                    >
-                      <span className={classes.reverse}>+25</span>
-                    </Button> */}
-                    {/* <Button
-                      className={classes.multiplier}
-                      size="medium"
-                      color="primary"
-                      variant="contained"
-                      onClick={() =>
-                        setBetAmount(
-                          state => (parseFloat(state) + 50).toFixed(2) || 0
-                        )
-                      }
-                    >
-                      <span className={classes.reverse}>+50</span>
-                    </Button> */}
-                    <Button
-                      className={classes.multiplier2}
-                      size="medium"
-                      color="primary"
-                      variant="contained"
-                      onClick={() =>
-                        setBetAmount(
-                          state => (parseFloat(state) / 2).toFixed(2) || 0
-                        )
-                      }
-                    >
-                      <span className={classes.reverse}>1/2</span>
-                    </Button>
-                    <Button
-                      className={classes.multiplier1}
-                      size="medium"
-                      color="primary"
-                      variant="contained"
-                      onClick={() =>
-                        setBetAmount(
-                          state => (parseFloat(state) * 2).toFixed(2) || 0
-                        )
-                      }
-                    >
-                      <span className={classes.reverse}>2x</span>
-                    </Button>
-                    {/* <Button
-                      className={classes.multiplier}
-                      size="medium"
-                      color="primary"
-                      variant="contained"
-                      onClick={() =>
-                        setBetAmount(
-                          user ? parseFloat(user.wallet).toFixed(2) : 0
-                        )
-                      }
-                    >
-                      <span className={classes.reverse}>Max</span>
-                    </Button> */}
+                <Box className={classes.placeBet} mt='18px' pb={2} pt={1}>
+                  <Box className={classes.betControl}>
+                    <Typography className={classes.title} style={{ color: "white" }}>
+                      Bet Amount
+                    </Typography>
+                    <Box className={classes.betCont}>
+                      <BetInput
+                        label=""
+                        variant="filled"
+                        value={betAmount}
+                        onChange={onBetChange}
+                        InputProps={{
+                          startAdornment: (
+                            <InputAdornment
+                              className={classes.inputIcon}
+                              position="start"
+                            >
+                              <AttachMoneyIcon
+                                style={{ fontSize: 16, marginTop: "-1em" }}
+                              />
+                            </InputAdornment>
+                          ),
+                        }}
+                      />
+                      {/* <Button
+                        className={classes.multiplier}
+                        size="medium"
+                        color="primary"
+                        variant="contained"
+                        onClick={() =>
+                          setBetAmount(
+                            state => (parseFloat(state) + 1).toFixed(2) || 0
+                          )
+                        }
+                      >
+                        <span className={classes.reverse}>+1</span>
+                      </Button> */}
+                      {/* <Button
+                        className={classes.multiplier}
+                        size="medium"
+                        color="primary"
+                        variant="contained"
+                        onClick={() =>
+                          setBetAmount(
+                            state => (parseFloat(state) + 5).toFixed(2) || 0
+                          )
+                        }
+                      >
+                        <span className={classes.reverse}>+5</span>
+                      </Button> */}
+                      {/* <Button
+                        className={classes.multiplier}
+                        size="medium"
+                        color="primary"
+                        variant="contained"
+                        onClick={() =>
+                          setBetAmount(
+                            state => (parseFloat(state) + 10).toFixed(2) || 0
+                          )
+                        }
+                      >
+                        <span className={classes.reverse}>+10</span>
+                      </Button> */}
+                      {/* <Button
+                        className={classes.multiplier}
+                        size="medium"
+                        color="primary"
+                        variant="contained"
+                        onClick={() =>
+                          setBetAmount(
+                            state => (parseFloat(state) + 25).toFixed(2) || 0
+                          )
+                        }
+                      >
+                        <span className={classes.reverse}>+25</span>
+                      </Button> */}
+                      {/* <Button
+                        className={classes.multiplier}
+                        size="medium"
+                        color="primary"
+                        variant="contained"
+                        onClick={() =>
+                          setBetAmount(
+                            state => (parseFloat(state) + 50).toFixed(2) || 0
+                          )
+                        }
+                      >
+                        <span className={classes.reverse}>+50</span>
+                      </Button> */}
+                      <Button
+                        className={classes.multiplier2}
+                        size="medium"
+                        color="primary"
+                        variant="contained"
+                        onClick={() =>
+                          setBetAmount(
+                            state => (parseFloat(state) / 2).toFixed(2) || 0
+                          )
+                        }
+                      >
+                        <span className={classes.reverse}>1/2</span>
+                      </Button>
+                      <Button
+                        className={classes.multiplier1}
+                        size="medium"
+                        color="primary"
+                        variant="contained"
+                        onClick={() =>
+                          setBetAmount(
+                            state => (parseFloat(state) * 2).toFixed(2) || 0
+                          )
+                        }
+                      >
+                        <span className={classes.reverse}>2x</span>
+                      </Button>
+                      {/* <Button
+                        className={classes.multiplier}
+                        size="medium"
+                        color="primary"
+                        variant="contained"
+                        onClick={() =>
+                          setBetAmount(
+                            user ? parseFloat(user.wallet).toFixed(2) : 0
+                          )
+                        }
+                      >
+                        <span className={classes.reverse}>Max</span>
+                      </Button> */}
+                    </Box>
                   </Box>
-                  <div
-                    style={{ width: "100%", color: "white" }}
-                    className={classes.splitTitle}
-                  >
-                    Cashout At:
-                  </div>
-                  <br />
-                  {/* <div className={classes.splitTitle}>Auto Bet</div> */}
-                  <Box
-                    className={classes.cashoutCont}
-                    style={{ width: "100%", marginLeft: "5.5%" }}
-                  >
-                    {/* <Switch
-                      color="primary"
-                      checked={autoCashoutEnabled}
-                      onChange={handleAutoCashoutChange}
-                    /> */}
-                    <TargetInput
-                      label=""
-                      variant="filled"
-                      value={`x ${target}`}
-                      onChange={onTargetChange}
-                      InputProps={{
-                        startAdornment: (
-                          <InputAdornment
-                            className={classes.inputIcon}
-                            position="start"
-                          >
-                            <TrackChangesIcon style={{ fontSize: 16, marginTop: '-1rem' }} />
-                          </InputAdornment>
-                        ),
-                      }}
-                    />
+                  <Box className={classes.betControl}>
+                    <Typography
+                      style={{ width: "100%", color: "white" }}
+                      className={classes.splitTitle}
+                    >
+                      Cashout At:
+                    </Typography>
+                    <br />
+                    {/* <div className={classes.splitTitle}>Auto Bet</div> */}
+                    <Box
+                      className={classes.cashoutCont}
+                      style={{ width: "100%" }}
+                    >
+                      {/* <Switch
+                        color="primary"
+                        checked={autoCashoutEnabled}
+                        onChange={handleAutoCashoutChange}
+                      /> */}
+                      <TargetInput
+                        label=""
+                        variant="filled"
+                        value={`x ${target}`}
+                        onChange={onTargetChange}
+                        InputProps={{
+                          startAdornment: (
+                            <InputAdornment
+                              className={classes.inputIcon}
+                              position="start"
+                            >
+                              <TrackChangesIcon style={{ fontSize: 16, marginTop: '-1rem' }} />
+                            </InputAdornment>
+                          ),
+                        }}
+                      />
+                    </Box>
                   </Box>
                   {/* <Box className={classes.autoCont}>
                     <Switch
@@ -758,12 +765,11 @@ const Crash = ({ user, isAuthenticated }) => {
           <div></div>
         )}
         <Box
+          className={classes.liveBetsWrapper}
           style={{
             width: "100%",
-            marginTop: "-100px",
+            // marginTop: "-100px",
             marginBottom: 48,
-            paddingLeft: "14%",
-            paddingRight: "14%",
           }}
         >
           <LiveBets />

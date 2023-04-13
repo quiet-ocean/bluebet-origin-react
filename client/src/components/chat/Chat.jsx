@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Fragment } from "react";
 import { chatSocket } from "../../services/websocket.service";
 import { getChatData } from "../../services/api.service";
-
+import { Box } from '@material-ui/core'
 // Components
 import Header from "./Header";
 import Messages from "./Messages";
@@ -86,9 +86,19 @@ const Chat = () => {
 
   return (
     <Fragment>
-      <Header />
-      <Messages loading={loading} chatMessages={chatMessages} usersOnline={usersOnline}  />
-      <Controls rain={rain} trivia={trivia} />
+      <Box
+        style={{
+          borderRadius: 5,
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          padding: 16,
+        }}
+      >
+        <Header />
+        <Messages loading={loading} chatMessages={chatMessages} usersOnline={usersOnline}  />
+        <Controls rain={rain} trivia={trivia} />
+      </Box>
     </Fragment>
   );
 };

@@ -8,7 +8,7 @@ const TargetInput = withStyles({
     // marginRight: 10,
     // marginLeft: "2.5%",
 
-    width: "90%",
+    width: "100%",
     "& :before": {
       display: "none",
     },

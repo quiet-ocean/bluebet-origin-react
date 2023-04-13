@@ -89,19 +89,20 @@ const ChatInput = withStyles(theme => ({
     background:"#0A0C1A",
 
     width: "100%",
-    padding: "1rem",
+    padding: 12,
     borderTop:" 2px solid #4d79ff",
     "& :before": {
       display: "none",
     },
     "& label": {
       color: "#323956",
-      fontSize: 15,
-      padding: 18,
+      fontSize: 14,
+      padding: 10,
       paddingLeft: 20,
     },
     "& div input": {
       color: "#57618d",
+      padding: '16px 12px 12px',
     },
     "& div": {
       background: "#0D1020",
@@ -112,9 +113,9 @@ const ChatInput = withStyles(theme => ({
 // Custom styled component
 const Send = withStyles({
   root: {
-    marginTop:"1em",
+    // marginTop:"1em",
     minWidth:"5em !important",
-    minHeight:"4em !important",
+    // minHeight:"4em !important",
     backgroundColor: "#4d79ff",
     borderColor: "#4F79FD",
     color: "white",
@@ -204,6 +205,35 @@ const Controls = ({  rain, trivia }) => {
           onKeyPress={onKeyPress}
           onFocus={onFocus}
           value={input}
+          InputProps={{
+            endAdornment: (
+              <div>
+                <Box display="flex">
+
+                  <IconButton
+                    onClick={() => setOpen(!open)}
+                    color="primary"
+                    style={{ marginLeft: "auto" }}
+                  >
+                    <Emoji />
+                  </IconButton>
+                  <Send onClick={onClick} variant="contained" >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="white" className="bi bi-send-fill" viewBox="0 0 10 10">
+                      <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z"/>
+                    </svg>
+                  </Send>
+                </Box>
+              </div>
+            )
+          }}
+        />
+        {/* <ChatInput
+          label="Type a message"
+          variant="filled"
+          onChange={onChange}
+          onKeyPress={onKeyPress}
+          onFocus={onFocus}
+          value={input}
         />
         <div style={{position:"absolute",top:"15%",left:"60%",width:"28%"}}>
           <Box display="flex">
@@ -221,7 +251,7 @@ const Controls = ({  rain, trivia }) => {
               </svg>
             </Send>
           </Box>
-        </div>
+        </div> */}
       
       </Box>
     </div>

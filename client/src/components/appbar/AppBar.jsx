@@ -10,7 +10,7 @@ import cutDecimalPoints from "../../utils/cutDecimalPoints";
 // MUI Components
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
-import AppBar from "@material-ui/core/AppBar";
+import { AppBar as MuiAppBar } from "@material-ui/core/";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -51,6 +51,7 @@ const useStyles = makeStyles(theme => ({
     padding: "1rem 1rem",
     position: "fixed",
     zIndex: 10,
+    color: '#ddd',
     [theme.breakpoints.down("sm")]: {
       width: "100%",
     },
@@ -62,6 +63,10 @@ const useStyles = makeStyles(theme => ({
         paddingLeft: 10,
         paddingRight: 10,
       },
+    },
+    '& .MuiButton-root': {
+      fontSize: 16,
+      fontWeight: 200,
     },
   },
   menu: {
@@ -75,11 +80,12 @@ const useStyles = makeStyles(theme => ({
     "& > button": {
       height: "3rem",
       width: "5rem",
-      backgroundColor: "#4F79FD",
+      // backgroundColor: "#4F79FD",
       borderColor: "#4F79FD",
       color: "white",
       // transform: "skew(-20deg)",
       marginRight: 20,
+      fontWeight: 500,
       "& img": {
         opacity: "1 !important",
       },
@@ -346,7 +352,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Navbar = ({ isAuthenticated, isLoading, user, logout }) => {
+const AppBar = ({ isAuthenticated, isLoading, user, logout }) => {
   // Declare State
   const classes = useStyles();
   const [openMarket, setOpenMarket] = useState(false);
@@ -400,7 +406,7 @@ const Navbar = ({ isAuthenticated, isLoading, user, logout }) => {
   }, [isLoading, isAuthenticated]);
 
   return (
-    <AppBar position="static" className={classes.root}>
+    <MuiAppBar position="static" className={classes.root}>
       <Toolbar variant="dense" className={classes.desktop}>
         <img src={logo} alt="" height="46px" style={{marginLeft: '-4px', marginRight: '12px'}}/>
         <Market
@@ -760,11 +766,11 @@ const Navbar = ({ isAuthenticated, isLoading, user, logout }) => {
           </div>
         )}
       </Toolbar>
-    </AppBar>
+    </MuiAppBar>
   );
 };
 
-Navbar.propTypes = {
+AppBar.propTypes = {
   isAuthenticated: PropTypes.bool,
   isLoading: PropTypes.bool,
   user: PropTypes.object,
@@ -777,4 +783,4 @@ const mapStateToProps = state => ({
   user: state.auth.user,
 });
 
-export default connect(mapStateToProps, { logout })(Navbar);
+export default connect(mapStateToProps, { logout })(AppBar);
