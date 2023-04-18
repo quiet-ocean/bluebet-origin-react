@@ -316,8 +316,9 @@ const useStyles = makeStyles(theme => ({
     fontSize: 14,
   },
   bet: {
-    minWidth: "90%",
-    marginLeft: "5%",
+    // minWidth: "90%",
+    width: '100%',
+    // marginLeft: "5%",
     fontSize: 14,
     padding: "0.5em !important",
     backgroundColor: "#4d79ff",

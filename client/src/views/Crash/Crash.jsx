@@ -698,37 +698,39 @@ const Crash = ({ user, isAuthenticated }) => {
                       onChange={handleAutoBetChange}
                     />
                   </Box> */}
-                  {!betting ? (
-                    <Button
-                      className={classes.bet}
-                      size="medium"
-                      color="primary"
-                      variant="contained"
-                      disabled={joining || autoBetEnabled}
-                      onClick={clickBet}
-                    >
-                      <span className={classes.reverse}>
-                        {joining
-                          ? "Betting..."
-                          : plannedBet
-                          ? "Cancel bet"
-                          : "Place Bet"}
-                      </span>
-                    </Button>
-                  ) : (
-                    <Button
-                      className={classes.cashout}
-                      size="medium"
-                      color="secondary"
-                      variant="contained"
-                      disabled={gameState !== GAME_STATES.InProgress || cashedOut}
-                      onClick={clickCashout}
-                    >
-                      <span className={classes.reverse}>
-                        {cashedOut ? "Cashed out" : "Cashout"}
-                      </span>
-                    </Button>
-                  )}
+                  <Box className={classes.betControl}>
+                    {!betting ? (
+                      <Button
+                        className={classes.bet}
+                        size="medium"
+                        color="primary"
+                        variant="contained"
+                        disabled={joining || autoBetEnabled}
+                        onClick={clickBet}
+                      >
+                        <span className={classes.reverse}>
+                          {joining
+                            ? "Betting..."
+                            : plannedBet
+                            ? "Cancel bet"
+                            : "Place Bet"}
+                        </span>
+                      </Button>
+                    ) : (
+                      <Button
+                        className={classes.cashout}
+                        size="medium"
+                        color="secondary"
+                        variant="contained"
+                        disabled={gameState !== GAME_STATES.InProgress || cashedOut}
+                        onClick={clickCashout}
+                      >
+                        <span className={classes.reverse}>
+                          {cashedOut ? "Cashed out" : "Cashout"}
+                        </span>
+                      </Button>
+                    )}
+                  </Box>
                 </Box>
               </Box>
             </Grid>
@@ -738,7 +740,8 @@ const Crash = ({ user, isAuthenticated }) => {
           <Box
             className={classes.root}
             style={{
-              display: "flex",
+              display: 'none',
+              // display: "flex",
               flexDirection: "column",
               marginTop: "-250px",
             }}
